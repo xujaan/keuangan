@@ -1,2 +1,2 @@
 <?php
-include "controllers/bootstrap.php";
+include "controllers/Bootstrap.php";

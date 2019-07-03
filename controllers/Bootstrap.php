@@ -1,6 +1,6 @@
 <?php
 session_start();
-$con = mysqli_connect('localhost', 'root', '1234569', 'keuangan');
+$con = mysqli_connect('localhost', 'root', '', 'keuangan');
 $sesilogin = isset($_SESSION['login']) ? 'true' : 'false';
 $parampage = isset($_GET['page']) ? $_GET['page'] : "";
 if($parampage=='login'){
