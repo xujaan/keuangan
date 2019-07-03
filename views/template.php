@@ -19,48 +19,88 @@
 
   <!-- Custom styles for this template-->
   <link href="./assets/css/sb-admin-2.min.css" rel="stylesheet">
-
+  <style>
+  .sidebar .nav-item {
+    padding-left : 1rem;
+    padding-right : 1rem;
+  }
+  .sidebar .nav-item:hover {
+    background : #2a4fbd;
+  }
+  .aktif {
+    background : #2a4fbd;
+  }
+  </style>
 </head>
 
 <body id="page-top">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-
+  
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SIM <sup>Keuangan</sup></div>
+        <div class="sidebar-brand-text mx-3">KEUANGAN</div>
       </a>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-
+      <?php 
+      $menuatas = isset($_GET['page']) ? $_GET['page'] : "";
+      $m1 = ''; $m2 = ''; $m3 = ''; $m4 = ''; $m5 = '';
+      switch ($menuatas) {
+        case 'dashboard':
+          $m1 = 'aktif'; $m2 = ''; $m3 = ''; $m4 = ''; $m5 = '';
+          break;
+        case 'saldo':
+          $m1 = ''; $m2 = 'aktif'; $m3 = ''; $m4 = ''; $m5 = '';
+          break;
+        case 'pemasukan':
+          $m1 = ''; $m2 = ''; $m3 = 'aktif'; $m4 = ''; $m5 = '';
+          break;
+        case 'pengeluaran':
+          $m1 = ''; $m2 = ''; $m3 = ''; $m4 = 'aktif'; $m5 = '';
+          break;
+        case 'users':
+          $m1 = ''; $m2 = ''; $m3 = ''; $m4 = ''; $m5 = 'aktif';
+          break;
+        default:
+          $m1 = ''; $m2 = ''; $m3 = ''; $m4 = ''; $m5 = '';
+          break;
+      }
+      
+      ?>
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
+      <li class="nav-item active <?php echo $m1; ?>">
         <a class="nav-link" href="?page=dashboard">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-chart-line"></i>
           <span>Dashboard</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active <?php echo $m2; ?>">
         <a class="nav-link" href="?page=saldo">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-file-invoice-dollar"></i>
           <span>Saldo</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active <?php echo $m3; ?>">
         <a class="nav-link" href="?page=pemasukan">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-arrow-up"></i>
           <span>Pemasukan</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active <?php echo $m4; ?>">
         <a class="nav-link" href="?page=pengeluaran">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-arrow-down"></i>
           <span>Pengeluaran</span></a>
+      </li>
+      <li class="nav-item active <?php echo $m5; ?>">
+        <a class="nav-link" href="?page=users">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Users</span></a>
       </li>
 
       <!-- Divider -->
@@ -71,8 +111,8 @@
       <!-- <hr class="sidebar-divider d-none d-md-block"> -->
 
       <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      <div class="text-center d-none d-md-inline text-light font-weight-lighter">
+        <small style="font-size: 10px">Copyright @ 2019 IT Salafiyah Alyasini</small>
       </div>
 
     </ul>
@@ -95,7 +135,7 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Cari berdasarkan kode laporan"
                 aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
@@ -284,13 +324,13 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <!-- <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Your Website 2019</span>
           </div>
         </div>
-      </footer>
+      </footer> -->
       <!-- End of Footer -->
 
     </div>
