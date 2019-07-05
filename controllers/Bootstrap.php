@@ -3,6 +3,7 @@ session_start();
 $con = mysqli_connect('localhost', 'root', '1234569', 'keuangan');
 $sesilogin = isset($_SESSION['login']) ? 'true' : 'false';
 $parampage = isset($_GET['page']) ? $_GET['page'] : "";
+$paramact = isset($_GET['act']) ? $_GET['act'] : "";
 if($parampage=='login'){
     include "controllers/Login.php";
     include "views/login.php";

@@ -1,13 +1,18 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
+    <?php if($paramact == 'tambah'){ ?>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Tambah Pemasukan</h1>
+    </div>
+    <div class="row">
+        <div class="col-12"></div>
+    </div>    
+    <?php }else{ ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Pemasukan</h1>
-        <!-- <a href="./assets/#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+        <a href="?page=pemasukan&act=tambah" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-plus fa-sm text-white-50"></i> Tambah Pemasukan</a>
     </div>
-    <!-- Content Row -->
     <div class="row">
         <div class="col-3">
             <label for="">Bulan</label>
@@ -32,8 +37,12 @@
                 <option value="">2019</option>
             </select>
         </div>
+        <div class="col-3">
+            <label for="">Cari</label>
+            <input type="text" class="form-control" placeholder="Cari berdasarkan sumber">
+        </div>
         <div class="col-12 mt-3">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Kode</th>
@@ -49,4 +58,5 @@
             </table>
         </div>
     </div>
+    <?php } ?>
 </div>

@@ -99,19 +99,19 @@
       <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Grafik Analisa</h6>
           <div class="dropdown no-arrow">
             <a class="dropdown-toggle" href="./assets/#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+            <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
               <div class="dropdown-header">Dropdown Header:</div>
               <a class="dropdown-item" href="./assets/#">Action</a>
               <a class="dropdown-item" href="./assets/#">Another action</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="./assets/#">Something else here</a>
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- Card Body -->
@@ -128,36 +128,29 @@
       <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Pesan Umum <small class="text-muted">(diperbarui setiap 1 menit)</small></h6>
           <div class="dropdown no-arrow">
             <a class="dropdown-toggle" href="./assets/#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+              <i class="fas fa-sync fa-sm fa-fw text-gray-400"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-              <div class="dropdown-header">Dropdown Header:</div>
-              <a class="dropdown-item" href="./assets/#">Action</a>
-              <a class="dropdown-item" href="./assets/#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="./assets/#">Something else here</a>
-            </div>
           </div>
         </div>
         <!-- Card Body -->
         <div class="card-body">
-          <div class="chart-pie pt-4 pb-2">
-            <canvas id="myPieChart"></canvas>
+          <div class="chart-pie">
+            <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
           </div>
-          <div class="mt-4 text-center small">
-            <span class="mr-2">
-              <i class="fas fa-circle text-primary"></i> Direct
-            </span>
-            <span class="mr-2">
-              <i class="fas fa-circle text-success"></i> Social
-            </span>
-            <span class="mr-2">
-              <i class="fas fa-circle text-info"></i> Referral
-            </span>
+          <div class="mt-0 text-center small">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small"
+                placeholder="Tulis pesan" aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-paper-plane fa-sm"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
