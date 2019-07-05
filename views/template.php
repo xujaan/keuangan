@@ -20,10 +20,10 @@
   <link href="./assets/css/sb-admin-2.min.css" rel="stylesheet">
   <script src="./assets/vendor/jquery/jquery.js"></script>
   <style>
-  /* .sidebar .nav-item {
+  .sidebar .nav-item {
     padding-left : 1rem;
     padding-right : 1rem;
-  } */
+  }
   .sidebar .nav-item:hover {
     background : #2a4fbd;
   }

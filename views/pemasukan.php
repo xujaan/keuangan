@@ -46,9 +46,10 @@
                 <option value="">2019</option>
             </select>
         </div>
-        <div class="col-md-3 col-sm-12 mb-3">
+        <div class="col-md-3 col-sm-12 mb-3 search-wrapper">
             <label for="">Cari</label>
-            <input type="text" class="form-control" id="caripemasukan" onkeyup="tampilpemasukan();" placeholder="Masukkan kata kunci">
+            <input type="text" class="form-control" id="caripemasukan" onkeyup="tampilpemasukan()"
+                placeholder="Masukkan kata kunci">
         </div>
         <div class="col-12 mt-3 table-responsive">
             <table class="table table-bordered table-hover">
@@ -118,32 +119,33 @@
         tampilpemasukan();
     });
 
+    // $('.search-wrapper').each(function () {
+    //     var searchWrapper = $(this);
+    //     $(this).find('input').filter(':first').keyup(function () {
+    //         searchWrapper.find('table tbody').children().hide();
+    //         var txt = $(this).val();
+    //         searchWrapper.find('table tbody').children().each(function () {
+    //             if ($(this).find("td").text().toUpperCase().indexOf(txt.toUpperCase()) != -1) {
+    //                 $(this).show();
+    //             }
+    //         });
+    //     });
+    // });
+
     function tampilpemasukan() {
-        $.getJSON('<?php echo $rooturl; ?>?page=pemasukan&act=json')
+        $.getJSON('<?php echo $rooturl; ?>?page=pemasukan&act=json', {
+            'cari' : ""
+        })
             .done(function (e) {
                 $("#bodytable").empty();
-                var results = [];
-                var searchVal = $("#caripemasukan").val();
-                var regex = new RegExp(searchVal, 'gi');
                 for (var i = 0; i < e.length; i++) {
-                    if($("#caripemasukan").val() != ""){
-                        if (e[i]['kode_in'].match(regex) ||
-                        e[i]['sumber_in'].match(regex) ||
-                        e[i]['nominal_in'].match(regex) ||
-                        e[i]['tgl_in'].match(regex) ||
-                        e[i]['user_in'].match(regex)) {
-                        results.push(e[i]);
-                        }
-                    }
                     var tr = $("<tr/>");
                     $(tr).append("<td>" + e[i].kode_in + "</td>");
                     $(tr).append("<td>" + e[i].sumber_in + "</td>");
                     $(tr).append("<td>" + e[i].nominal_in + "</td>");
                     $(tr).append("<td>" + e[i].tgl_in + "</td>");
                     $(tr).append("<td>" + e[i].user_in + "</td>");
-                    $(tr).append(
-                        "<td><a href='#' data-toggle='modal' data-target='#tambahpemasukanModal'><i class='fas fa-edit'></i></a></td>"
-                    );
+                    $(tr).append("<td><a href='#' data-toggle='modal' data-target='#tambahpemasukanModal'><i class='fas fa-edit'></i></a></td>");
                     $('#bodytable').append(tr);
                 }
             });
