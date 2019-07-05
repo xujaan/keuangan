@@ -42,7 +42,7 @@
                 <div class="p-5">
                   <div class="text-center">
                     <?php if(isset($_GET['alert'])){ ?>
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-danger" role="alert">
                       Username dan password salah!
                     </div>
                     <?php } ?>
