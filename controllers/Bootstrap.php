@@ -1,9 +1,12 @@
 <?php
 session_start();
+$rooturl = "http://localhost:8000/";
 $con = mysqli_connect('localhost', 'root', '1234569', 'keuangan');
 $sesilogin = isset($_SESSION['login']) ? 'true' : 'false';
 $parampage = isset($_GET['page']) ? $_GET['page'] : "";
 $paramact = isset($_GET['act']) ? $_GET['act'] : "";
+$paramalert = isset($_GET['alert']) ? $_GET['alert'] : "";
+
 if($parampage=='login'){
     include "controllers/Login.php";
     include "views/login.php";
@@ -24,7 +27,6 @@ if($parampage=='login'){
     }else{
         include "controllers/".ucfirst($parampage).".php";
     }
-    include "views/template.php";
 }
 if(!$con){
     include "views/error.php";

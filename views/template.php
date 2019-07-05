@@ -18,11 +18,12 @@
     rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="./assets/css/sb-admin-2.min.css" rel="stylesheet">
+  <script src="./assets/vendor/jquery/jquery.js"></script>
   <style>
-  .sidebar .nav-item {
+  /* .sidebar .nav-item {
     padding-left : 1rem;
     padding-right : 1rem;
-  }
+  } */
   .sidebar .nav-item:hover {
     background : #2a4fbd;
   }
@@ -41,9 +42,9 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fas fa-file-invoice-dollar"></i>
         </div>
         <div class="sidebar-brand-text mx-3">KEUANGAN</div>
       </a>
@@ -321,17 +322,6 @@
 
       </div>
       <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <!-- <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
-          </div>
-        </div>
-      </footer> -->
-      <!-- End of Footer -->
-
     </div>
     <!-- End of Content Wrapper -->
 
@@ -364,7 +354,7 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="./assets/vendor/jquery/jquery.min.js"></script>
+
   <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
