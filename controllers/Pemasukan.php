@@ -15,12 +15,17 @@ if(isset($_POST['simpan'])){
     }
 }
 
-$resultpemasukan = $con->query("select * from pemasukan");
-if($paramact == "json"){
-    while($arraypemasukan = $resultpemasukan->fetch_assoc()) {
-        $rows[] = $arraypemasukan;
+// if($paramact == "json"){
+    if($paramcari!=""){
+        $resultpemasukan = $con->query("SELECT * FROM pemasukan WHERE CONCAT(kode_in, sumber_in, nominal_in, tgl_in, user_in) LIKE '%".$paramcari."%'");
+    }else{
+        $resultpemasukan = $con->query("select * from pemasukan");
     }
-    print json_encode($rows);
-}else{
+    // $rows = array();
+    // while($arraypemasukan = $resultpemasukan->fetch_assoc()) {
+        // $rows[] = $arraypemasukan;
+    // }
+    // print json_encode($rows);
+// }else{
     include "views/template.php";
-}
+// }
