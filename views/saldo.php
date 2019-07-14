@@ -6,12 +6,12 @@
         <h1 class="h3 mb-0 text-gray-800">Saldo</h1>
         <!-- <a href="?page=saldo&act=tambah" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
         class="fas fa-plus fa-sm text-white-50"></i> Tambah Saldo</a> -->
-        <h1 class="mt-2 mb-0">Rp 40.000.000,00</h1>
+        <h1 class="mt-2 mb-0 text-success">Rp <?php echo number_format($arraysaldoterakhir['saldo'],0,",","."); ?></h1>
     </div>
     <hr>
     <!-- Content Row -->
     <div class="row">
-        <div class="col-3">
+        <!-- <div class="col-3">
             <label for="">Bulan</label>
             <select name="" id="" class="form-control">
                 <option value="1">Januari</option>
@@ -34,16 +34,12 @@
                 <option value="">2019</option>
             </select>
         </div>
-        <div class="col-3">
-            <label for="">Cari berdasarkan tanggal</label>
-            <input type="date" class="form-control">
-        </div>
+         -->
         <div class="col-12 mt-3">
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover" id="tablesaldo">
                 <thead class="table-primary">
                     <tr>
                         <th>No</th>
-                        <th>Saldo Awal</th>
                         <th>Pemasukan</th>
                         <th>Pengeluaran</th>
                         <th>Total Saldo</th>
@@ -51,16 +47,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <?php
+                    $no=1;
+                    while($rowsaldo = $resultsaldo->fetch_assoc()){ ?>
+                        <tr>
+                            <td><?php echo $no++ ?></td>
+                            <td><?php echo number_format($rowsaldo['in'],0,",",".") ?></td>
+                            <td><?php echo number_format($rowsaldo['out'],0,",",".") ?></td>
+                            <td><?php echo number_format($rowsaldo['saldo'],0,",",".") ?></td>
+                            <td><?php echo $rowsaldo['reg'] ?></td>
+                        </tr>
+                    <?php }
+                    ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+<script>
+$(function(){
+    $('#tablesaldo').DataTable({
+        "order": [[ 4, "desc" ]]
+    });
+})
+</script>

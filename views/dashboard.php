@@ -117,7 +117,7 @@
         <!-- Card Body -->
         <div class="card-body">
           <div class="chart-area">
-            <canvas id="myAreaChart"></canvas>
+            <canvas id="chartSaldo"></canvas>
           </div>
         </div>
       </div>
@@ -128,7 +128,9 @@
       <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Pesan Umum <small class="text-muted">(diperbarui setiap 1 menit)</small></h6>
+          <h6 class="m-0 font-weight-bold text-primary">Pesan Umum 
+            <!-- <small class="text-muted">(diperbarui setiap 1 menit)</small> -->
+          </h6>
           <div class="dropdown no-arrow">
             <a class="dropdown-toggle" href="./assets/#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
@@ -158,3 +160,45 @@
   </div>
 </div>
 <!-- /.container-fluid -->
+<script>
+$(function (){
+  $.getJSON('http://localhost:8000/?page=saldo&act=api', function (e) {
+      var labels = e.map(function (key) {
+          return key.reg;
+      });
+      var datasaldo = e.map(function (key) {
+          return key.saldo;
+      });
+      var datain = e.map(function (key) {
+          return key.in;
+      });
+      var dataout = e.map(function (key) {
+          return key.out;
+      });
+      
+
+      new Chart(document.getElementById("chartSaldo"), {
+          type: 'line',
+          data: {
+              labels: labels,
+              datasets: [{
+                  data: datasaldo,
+                  label: "Saldo",
+                  borderColor: "#6bc44b",
+                  fill: true
+              },{
+                  data: datain,
+                  label: "Pemasukan",
+                  borderColor: "#3e95cd",
+                  fill: true
+              },{
+                  data: dataout,
+                  label: "Pengeluaran",
+                  borderColor: "#f0d959",
+                  fill: true
+              }]
+          }
+      });
+  });
+})
+</script>
