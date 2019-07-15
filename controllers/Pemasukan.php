@@ -18,7 +18,7 @@ if(isset($_POST['simpan'])){
     // print_r($querysaldo);
     $resultsimpan = $con->query($querysimpan);
     if(!$resultsimpan || !$resultsaldo){
-        // header("location: ?page=pemasukan&alert=gagal");
+        header("location: ?page=pemasukan&alert=gagal");
     }else{
         header("location: ?page=pemasukan&alert=berhasil");
     }

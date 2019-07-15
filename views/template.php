@@ -21,6 +21,15 @@
   <link href="./assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="./assets/vendor/jquery/jquery.js"></script>
   <style>
+  table.table-bordered{
+    border:0.5px solid #474747;
+  }
+  table.table-bordered > thead > tr > th{
+    border:0.5px solid #474747;
+  }
+  table.table-bordered > tbody > tr > td{
+    border:0.5px solid #474747;
+  }
   /* .sidebar .nav-item {
     padding-left : 1rem;
     padding-right : 1rem;
@@ -98,11 +107,11 @@
           <i class="fas fa-fw fa-arrow-down"></i>
           <span>Pengeluaran</span></a>
       </li>
-      <li class="nav-item active <?php echo $m5; ?>">
+      <!-- <li class="nav-item active <?php echo $m5; ?>">
         <a class="nav-link" href="?page=users">
           <i class="fas fa-fw fa-user"></i>
           <span>Users</span></a>
-      </li>
+      </li> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider">

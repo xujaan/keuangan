@@ -36,7 +36,7 @@
         </div>
          -->
         <div class="col-12 mt-3">
-            <table class="table table-bordered table-hover" id="tablesaldo">
+            <table class="table table-bordered table-hover table-light text-dark" id="tablesaldo">
                 <thead class="table-primary">
                     <tr>
                         <th>No</th>
@@ -52,8 +52,8 @@
                     while($rowsaldo = $resultsaldo->fetch_assoc()){ ?>
                         <tr>
                             <td><?php echo $no++ ?></td>
-                            <td><?php echo number_format($rowsaldo['in'],0,",",".") ?></td>
-                            <td><?php echo number_format($rowsaldo['out'],0,",",".") ?></td>
+                            <td><?php echo ($rowsaldo['in'] != 0) ? number_format($rowsaldo['in'],0,",",".") : "-" ?></td>
+                            <td><?php echo ($rowsaldo['out'] != 0) ? number_format($rowsaldo['out'],0,",",".") : "-" ?></td>
                             <td><?php echo number_format($rowsaldo['saldo'],0,",",".") ?></td>
                             <td><?php echo $rowsaldo['reg'] ?></td>
                         </tr>

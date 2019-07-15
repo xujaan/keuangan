@@ -7,6 +7,7 @@ $parampage = isset($_GET['page']) ? $_GET['page'] : "";
 $paramact = isset($_GET['act']) ? $_GET['act'] : "";
 $paramalert = isset($_GET['alert']) ? $_GET['alert'] : "";
 $paramcari = isset($_GET['cari']) ? $_GET['cari'] : "";
+$paramkode = isset($_GET['kode']) ? $_GET['kode'] : "";
 //sesi timeout
 if (!isset($_SESSION['CREATED'])) {
     $_SESSION['CREATED'] = time();

@@ -18,7 +18,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Saldo</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 40.000.000,00</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">Rp <?php echo number_format($saldo,0,",","."); ?></div>
             </div>
             <!-- <div class="col-auto">
               <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -35,7 +35,7 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pemasukan Bulan Ini</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 215.000,00</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">Rp <?php echo number_format($pemasukan,0,",","."); ?></div>
             </div>
             <!-- <div class="col-auto">
               <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -54,7 +54,7 @@
               <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pengeluaran Bulan Ini</div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Rp 150.000,00</div>
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Rp <?php echo number_format($pengeluaran,0,",","."); ?></div>
                 </div>
                 <!-- <div class="col">
                   <div class="progress progress-sm mr-2">
@@ -128,7 +128,7 @@
       <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">Pesan Umum 
+          <h6 class="m-0 font-weight-bold text-primary">Pesan Umum
             <!-- <small class="text-muted">(diperbarui setiap 1 menit)</small> -->
           </h6>
           <div class="dropdown no-arrow">
@@ -145,8 +145,8 @@
           </div>
           <div class="mt-0 text-center small">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small"
-                placeholder="Tulis pesan" aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Tulis pesan"
+                aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-paper-plane fa-sm"></i>
@@ -161,44 +161,100 @@
 </div>
 <!-- /.container-fluid -->
 <script>
-$(function (){
-  $.getJSON('http://localhost:8000/?page=saldo&act=api', function (e) {
+  $(function () {
+    $.getJSON('http://localhost:8000/?page=saldo&act=api', function (e) {
       var labels = e.map(function (key) {
-          return key.reg;
+        return key.reg;
       });
       var datasaldo = e.map(function (key) {
-          return key.saldo;
+        return key.saldo;
       });
       var datain = e.map(function (key) {
-          return key.in;
+        return key.in;
       });
       var dataout = e.map(function (key) {
-          return key.out;
+        return key.out;
       });
-      
+
 
       new Chart(document.getElementById("chartSaldo"), {
-          type: 'line',
-          data: {
-              labels: labels,
-              datasets: [{
-                  data: datasaldo,
-                  label: "Saldo",
-                  borderColor: "#6bc44b",
-                  fill: true
-              },{
-                  data: datain,
-                  label: "Pemasukan",
-                  borderColor: "#3e95cd",
-                  fill: true
-              },{
-                  data: dataout,
-                  label: "Pengeluaran",
-                  borderColor: "#f0d959",
-                  fill: true
-              }]
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: datasaldo,
+            label: "Saldo",
+            borderColor: "#6bc44b",
+            fill: false
+          }, {
+            data: datain,
+            label: "Pemasukan",
+            borderColor: "#3e95cd",
+            fill: false
+          }, {
+            data: dataout,
+            label: "Pengeluaran",
+            borderColor: "#f0d959",
+            fill: false
+          }]
+        },
+        options: {
+          maintainAspectRatio: false,
+          layout: {
+            padding: {
+              left: 10,
+              right: 25,
+              top: 25,
+              bottom: 0
+            }
+          },
+          scales: {
+            xAxes: [{
+              time: {
+                unit: 'date'
+              },
+              gridLines: {
+                display: false,
+                drawBorder: false
+              },
+              ticks: {
+                maxTicksLimit: 7
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                maxTicksLimit: 5,
+                padding: 10,
+              },
+              gridLines: {
+                color: "rgb(234, 236, 244)",
+                zeroLineColor: "rgb(234, 236, 244)",
+                drawBorder: false,
+                borderDash: [2],
+                zeroLineBorderDash: [2]
+              }
+            }],
+          },
+          legend: {
+            display: false
+          },
+          tooltips: {
+            backgroundColor: "rgb(255,255,255)",
+            bodyFontColor: "#858796",
+            titleMarginBottom: 10,
+            titleFontColor: '#6e707e',
+            titleFontSize: 14,
+            borderColor: '#dddfeb',
+            borderWidth: 1,
+            xPadding: 15,
+            yPadding: 15,
+            displayColors: false,
+            intersect: false,
+            mode: 'index',
+            caretPadding: 10
           }
+        }
       });
-  });
-})
+    });
+  })
 </script>

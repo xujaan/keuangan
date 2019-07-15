@@ -65,9 +65,9 @@
     </form>
     <div class="row">
         <div class="col-12 mt-3 table-responsive">
-            <table id="dataTable" class="table table-bordered table-hover">
+            <table id="dataTable" class="table table-bordered table-hover table-light text-dark">
                 <thead>
-                    <tr class="table-warning">
+                    <tr class="table-primary">
                         <th>Kode</th>
                         <th>Sumber</th>
                         <th>Nominal</th>
@@ -82,7 +82,7 @@
                     <tr>
                         <td><?php echo $rowpemasukan['kode_in']; ?></td>
                         <td><?php echo $rowpemasukan['sumber_in']; ?></td>
-                        <td><?php echo $rowpemasukan['nominal_in']; ?></td>
+                        <td><?php echo number_format($rowpemasukan['nominal_in'],0,",","."); ?></td>
                         <td><?php echo $rowpemasukan['tgl_in']; ?></td>
                         <td><?php echo $rowpemasukan['user_in']; ?></td>
                         <td><?php 
@@ -148,7 +148,14 @@
         $('#tanggal_in').val(new Date().toDateInputValue());
         // tampilpemasukan();
         $('#dataTable').DataTable({
-            "order": [[ 3, "desc" ]]
+            "order": [[ 3, "desc" ]],
+            "language": {
+                "lengthMenu": "Tampilkan _MENU_ data perhalaman",
+                "zeroRecords": "Tidak ada data tersedia",
+                "info": "Tampilkan hal _PAGE_ dari _PAGES_",
+                "infoEmpty": "Tidak ada data tersedia",
+                "infoFiltered": "(filtered from _MAX_ total records)"
+            }
         });
     });
 
